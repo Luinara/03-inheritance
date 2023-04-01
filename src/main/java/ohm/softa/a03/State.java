@@ -6,11 +6,12 @@ import org.apache.logging.log4j.Logger;
 public abstract class State {
 
     protected static final Logger logger = LogManager.getLogger();
-    int time = 0;
-    final int duration;
+    private int time;
+    private final int duration;
 
     protected State(int duration) {
         this.duration = duration;
+        this.time = 0;
     }
 
     final State tick(Cat cat){
@@ -26,9 +27,5 @@ public abstract class State {
 
     public int getTime() {
         return time;
-    }
-
-    public int getDuration() {
-        return duration;
     }
 }

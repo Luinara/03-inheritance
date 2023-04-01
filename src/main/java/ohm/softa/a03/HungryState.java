@@ -15,6 +15,10 @@ public class HungryState extends State{
 
     State feed(Cat cat){
         logger.info("You feed the cat...");
-        return new DigestingState(cat.getDigest());
+        DigestingState state = new DigestingState(cat.getDigest());
+        int restAwakeTime = cat.getAwake()-getTime()-cat.getDigest();
+        if (restAwakeTime < 0) restAwakeTime = 0;
+        state.setRestAwakeTime(restAwakeTime);
+        return state;
     }
 }
